@@ -20,7 +20,7 @@ import br.com.inatel.faketwitch.repository.ChannelRepository;
 @EnableWebSecurity
 @Configuration
 @Profile("dev")
-public class DevConfigurations extends WebSecurityConfigurerAdapter {
+public class DevSecurityConfigurations extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private AuthenticationService authenticationService;
@@ -63,7 +63,6 @@ public class DevConfigurations extends WebSecurityConfigurerAdapter {
 	}
 	
 	
-	//Configuracoes de recursos estaticos(js, css, imagens, etc.)
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**", "/swagger-resources/**");
