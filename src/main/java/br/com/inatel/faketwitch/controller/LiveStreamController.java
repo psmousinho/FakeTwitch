@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedLiveStreamDTO;
+import br.com.inatel.faketwitch.controller.dto.SimplifiedLiveStreamDTO;
 import br.com.inatel.faketwitch.controller.form.LiveStreamForm;
 import br.com.inatel.faketwitch.controller.form.LiveStreamUpdateForm;
 import br.com.inatel.faketwitch.modelo.Channel;

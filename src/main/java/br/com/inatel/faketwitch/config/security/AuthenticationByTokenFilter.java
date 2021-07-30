@@ -14,12 +14,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import br.com.inatel.faketwitch.modelo.Channel;
 import br.com.inatel.faketwitch.repository.ChannelRepository;
 
-public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
+public class AuthenticationByTokenFilter extends OncePerRequestFilter {
 	
 	private TokenService tokenService;
 	private ChannelRepository repository;
 
-	public AutenticacaoViaTokenFilter(TokenService tokenService, ChannelRepository repository) {
+	public AuthenticationByTokenFilter(TokenService tokenService, ChannelRepository repository) {
 		this.tokenService = tokenService;
 		this.repository = repository;
 	}

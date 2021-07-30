@@ -1,10 +1,7 @@
-package br.com.inatel.faketwitch.controller.dto.detailed;
+package br.com.inatel.faketwitch.controller.dto;
 
 import java.util.List;
 
-import br.com.inatel.faketwitch.controller.dto.CategoryDTO;
-import br.com.inatel.faketwitch.controller.dto.ChannelDTO;
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedLiveStreamDTO;
 import br.com.inatel.faketwitch.modelo.Category;
 
 public class DetailedCategoryDTO extends CategoryDTO {

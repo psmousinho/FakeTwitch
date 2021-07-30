@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.inatel.faketwitch.controller.dto.ConnectionDTO;
-import br.com.inatel.faketwitch.controller.dto.detailed.DetailedConnectionDTO;
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedConnectionDTO;
+import br.com.inatel.faketwitch.controller.dto.DetailedConnectionDTO;
+import br.com.inatel.faketwitch.controller.dto.SimplifiedConnectionDTO;
+import br.com.inatel.faketwitch.controller.form.ConnectionForm;
 import br.com.inatel.faketwitch.modelo.Channel;
 import br.com.inatel.faketwitch.modelo.Connection;
 import br.com.inatel.faketwitch.modelo.ConnectionStatus;
@@ -109,7 +110,7 @@ public class ConnectionController {
 	@Transactional
 	@CacheEvict(value = {"channelConections","listFollowing", "listFollowers", "listSubscriptions", "listSubscribers" }, allEntries = true)
 	public ResponseEntity<SimplifiedConnectionDTO> createConnection(@PathVariable("id") Long id,
-			@PathVariable("targetId") Long targetId, @RequestParam(required = false) @Valid String status) {
+			@PathVariable("targetId") Long targetId,  @RequestBody @Valid ConnectionForm form) {
 
 		Optional<Channel> owner = channelRepository.findById(id);
 		Optional<Channel> target = channelRepository.findById(targetId);
@@ -118,14 +119,10 @@ public class ConnectionController {
 			Connection previousConnectionTest = connectionRepository.findByOwnerAndTarget(owner.get(), target.get());
 			if (previousConnectionTest == null) {
 
-				Connection newConnections = new Connection(owner.get(), target.get());
-
-				if (status != null) {
-					newConnections.setStatus(ConnectionStatus.valueOf(status));
-				}
-
-				connectionRepository.save(newConnections);
-				return ResponseEntity.ok(new SimplifiedConnectionDTO(newConnections));
+				Connection newConnection = new Connection(owner.get(), target.get());
+				newConnection.setStatus(form.getStatus());
+				connectionRepository.save(newConnection);
+				return ResponseEntity.ok(new SimplifiedConnectionDTO(newConnection));
 			} else {
 				return ResponseEntity.status(403).build();
 			}
@@ -139,7 +136,7 @@ public class ConnectionController {
 	@Transactional
 	@CacheEvict(value = {"channelConections","listFollowing", "listFollowers", "listSubscriptions", "listSubscribers" }, allEntries = true)
 	public ResponseEntity<SimplifiedConnectionDTO> updateConnection(@PathVariable("id") Long id,
-			@PathVariable("targetId") Long targetId, @RequestParam() @Valid String status) {
+			@PathVariable("targetId") Long targetId, @RequestBody @Valid ConnectionForm form) {
 
 		Optional<Channel> owner = channelRepository.findById(id);
 		Optional<Channel> target = channelRepository.findById(targetId);
@@ -147,7 +144,7 @@ public class ConnectionController {
 
 			Connection previousConnection = connectionRepository.findByOwnerAndTarget(owner.get(), target.get());
 			if (previousConnection != null) {
-				previousConnection.setStatus(ConnectionStatus.valueOf(status));
+				previousConnection.setStatus(form.getStatus());
 				return ResponseEntity.ok(new SimplifiedConnectionDTO(previousConnection));
 			}
 		}

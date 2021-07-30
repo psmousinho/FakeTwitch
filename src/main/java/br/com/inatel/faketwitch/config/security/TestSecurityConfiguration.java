@@ -17,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class TestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	private AutenticationService autenticacaoService;
+	private AuthenticationService authenticationService;
 	
 	@Override
 	@Bean
@@ -27,7 +27,7 @@ public class TestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(autenticacaoService).passwordEncoder(new BCryptPasswordEncoder());
+		auth.userDetailsService(authenticationService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
 	

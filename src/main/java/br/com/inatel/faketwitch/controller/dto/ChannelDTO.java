@@ -1,6 +1,5 @@
 package br.com.inatel.faketwitch.controller.dto;
 
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedChannelDTO;
 import br.com.inatel.faketwitch.modelo.Channel;
 
 public class ChannelDTO extends SimplifiedChannelDTO {

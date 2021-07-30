@@ -1,6 +1,5 @@
 package br.com.inatel.faketwitch.controller.dto;
 
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedConnectionDTO;
 import br.com.inatel.faketwitch.modelo.Connection;
 
 public class ConnectionDTO extends SimplifiedConnectionDTO {

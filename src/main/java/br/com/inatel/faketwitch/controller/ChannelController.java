@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.inatel.faketwitch.controller.dto.ChannelDTO;
-import br.com.inatel.faketwitch.controller.dto.detailed.DetailedChannelDTO;
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedCategoryDTO;
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedChannelDTO;
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedLiveStreamDTO;
+import br.com.inatel.faketwitch.controller.dto.DetailedChannelDTO;
+import br.com.inatel.faketwitch.controller.dto.SimplifiedCategoryDTO;
+import br.com.inatel.faketwitch.controller.dto.SimplifiedChannelDTO;
+import br.com.inatel.faketwitch.controller.dto.SimplifiedLiveStreamDTO;
 import br.com.inatel.faketwitch.controller.form.ChannelForm;
 import br.com.inatel.faketwitch.controller.form.ChannelUpdateForm;
 import br.com.inatel.faketwitch.modelo.Channel;
@@ -66,8 +66,6 @@ public class ChannelController {
 		return ResponseEntity.notFound().build();
 	}
 
-	// TODO Criar Papel admin e permitir que somente ele cadastre novos usuarios
-	// pela api
 	@PostMapping
 	@Transactional
 	@CacheEvict(value = "channelList", allEntries = true)

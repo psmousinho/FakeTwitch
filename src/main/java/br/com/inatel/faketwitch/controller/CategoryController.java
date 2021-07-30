@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.inatel.faketwitch.controller.dto.CategoryDTO;
-import br.com.inatel.faketwitch.controller.dto.detailed.DetailedCategoryDTO;
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedCategoryDTO;
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedChannelDTO;
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedLiveStreamDTO;
+import br.com.inatel.faketwitch.controller.dto.DetailedCategoryDTO;
+import br.com.inatel.faketwitch.controller.dto.SimplifiedCategoryDTO;
+import br.com.inatel.faketwitch.controller.dto.SimplifiedChannelDTO;
+import br.com.inatel.faketwitch.controller.dto.SimplifiedLiveStreamDTO;
 import br.com.inatel.faketwitch.controller.form.CategoryForm;
 import br.com.inatel.faketwitch.modelo.Category;
 import br.com.inatel.faketwitch.modelo.Channel;
@@ -76,7 +76,7 @@ public class CategoryController {
 		return ResponseEntity.notFound().build();
 	}
 
-	@GetMapping("/{id/followers}")
+	@GetMapping("/{id}/followers")
 	public ResponseEntity<List<SimplifiedChannelDTO>> categoryFollowers(@PathVariable("id") Long id) {
 		Optional<Category> category = categoryRepository.findById(id);
 		if (category.isPresent()) {
@@ -96,8 +96,6 @@ public class CategoryController {
 		return ResponseEntity.notFound().build();
 	}
 
-	// TODO Criar Papel admin e permitir que somente ele cadastre novos usuarios
-	// pela api
 	@PostMapping
 	@Transactional
 	@CacheEvict(value = "categories", allEntries = true)

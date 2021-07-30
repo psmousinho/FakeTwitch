@@ -19,8 +19,8 @@ import br.com.inatel.faketwitch.repository.ChannelRepository;
 
 @EnableWebSecurity
 @Configuration
-@Profile("prod")
-public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
+@Profile("dev")
+public class DevConfigurations extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private AuthenticationService authenticationService;

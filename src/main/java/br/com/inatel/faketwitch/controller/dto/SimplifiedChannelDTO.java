@@ -1,4 +1,4 @@
-package br.com.inatel.faketwitch.controller.dto.simplified;
+package br.com.inatel.faketwitch.controller.dto;
 
 import br.com.inatel.faketwitch.modelo.Channel;
 

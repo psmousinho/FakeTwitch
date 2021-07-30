@@ -1,6 +1,5 @@
 package br.com.inatel.faketwitch.controller.dto;
 
-import br.com.inatel.faketwitch.controller.dto.simplified.SimplifiedCategoryDTO;
 import br.com.inatel.faketwitch.modelo.Category;
 
 public class CategoryDTO extends SimplifiedCategoryDTO {

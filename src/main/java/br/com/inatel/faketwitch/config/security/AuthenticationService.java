@@ -12,7 +12,7 @@ import br.com.inatel.faketwitch.modelo.Channel;
 import br.com.inatel.faketwitch.repository.ChannelRepository;
 
 @Service
-public class AutenticationService implements UserDetailsService {
+public class AuthenticationService implements UserDetailsService {
 	
 	@Autowired
 	private ChannelRepository repository;
@@ -24,7 +24,7 @@ public class AutenticationService implements UserDetailsService {
 			return usuario.get();
 		}
 		
-		throw new UsernameNotFoundException("Dados inválidos!");
+		throw new UsernameNotFoundException("Invalid User!");
 	}
 
 }

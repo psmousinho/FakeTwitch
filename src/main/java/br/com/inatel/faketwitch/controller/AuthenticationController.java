@@ -19,7 +19,7 @@ import br.com.inatel.faketwitch.controller.form.LoginForm;
 
 @RestController
 @RequestMapping("/auth")
-public class AutenticacaoController {
+public class AuthenticationController {
 	
 	@Autowired
 	private AuthenticationManager authManager;

@@ -1,7 +1,5 @@
-package br.com.inatel.faketwitch.controller.dto.detailed;
+package br.com.inatel.faketwitch.controller.dto;
 
-import br.com.inatel.faketwitch.controller.dto.ChannelDTO;
-import br.com.inatel.faketwitch.controller.dto.ConnectionDTO;
 import br.com.inatel.faketwitch.modelo.Connection;
 
 public class DetailedConnectionDTO extends ConnectionDTO {

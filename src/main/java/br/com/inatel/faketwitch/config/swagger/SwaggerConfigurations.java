@@ -20,14 +20,14 @@ public class SwaggerConfigurations {
 	public Docket forumApi() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("br.com.alura.forum"))
+				.apis(RequestHandlerSelectors.basePackage("br.com.inatel.faketwitch"))
 				.paths(PathSelectors.ant("/**"))
 				.build()
 				.ignoredParameterTypes(Channel.class)
 				.globalOperationParameters(Arrays.asList(
 						new ParameterBuilder()
 						.name("Authorization")
-						.description("Header para token JWT")
+						.description("Header for JWT")
 						.modelRef(new ModelRef("string"))
 						.parameterType("header")
 						.required(false)
