@@ -1,8 +1,14 @@
 # FakeTwitch
 
 ## About
-This application is an REST API that simulates the functionalities of the gameplay streaming service called Twitch. 
+This project is a REST API that simulates the functionalities of the gameplay streaming service called Twitch. 
 A registered user can follow other users or categories(games) and, from that, have acess to livestreams related to their interest.
+
+## Setup
+The dependencies of this project are handle by Maven. So if you're using an IDE, it will probably handle the setup for you.
+If you want to setup by yourself you can run the command `./mvnw spring-boot:run` in the root directory after installing Maven.
+
+You can test the API features by using the documentation built automatically by Swagger. Run the project and acess `localhost:8080/swagger-ui.html`.
 
 ## Features
 
@@ -11,13 +17,14 @@ The API contains the following features:
 - Channel
   - Create
   - List
+    - List active LiveStreams from channels followed
+    - List past LiveStreams from channels followed
+    - List categories followed
+    - List all followed channels
   - Detail
   - Update
   - Delete
-  - List active LiveStreams from channels followed
-  - List past LiveStreams from channels followed
-  - List categories followed
-  - List all followed channels
+
 
 - Connection
   - Create
@@ -47,12 +54,6 @@ The API contains the following features:
 - Twitch  
   - Search by name
   - Search by id
-
-You can test the API features by using the documentation built automatically by Swagger. Run the project and acess `localhost:8080/swagger-ui.html`.
-
-## Setup
-The dependencies of this project are handle by Maven. So if you're using an IDE, it will probably handle the setup for you.
-If you want to setup by yourself you can run the command `./mvnw spring-boot:run` in the root directory after installing Maven.
 
 ## Tools and technologies
 This project was developed using the following tools and technologies:
