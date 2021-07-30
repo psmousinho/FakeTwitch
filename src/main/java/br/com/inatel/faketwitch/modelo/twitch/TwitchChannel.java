@@ -22,7 +22,7 @@ public class TwitchChannel implements Serializable {
 	private Integer delay;
 
 	public Integer getDelay() {
-		return delay;
+		return delay; 
 	}
 
 	public void setDelay(Integer delay) {

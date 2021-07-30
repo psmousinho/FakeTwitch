@@ -72,13 +72,13 @@ public class ChannelController {
 	public ResponseEntity<ChannelDTO> createChannel(@RequestBody @Valid ChannelForm form,
 			UriComponentsBuilder uriBuilder) {
 		Channel channel = form.convert();
-		
+
 		Optional<Channel> previusChannelCheck = channelRepository.findByName(channel.getName());
-		
-		if(previusChannelCheck.isPresent()) {
+
+		if (previusChannelCheck.isPresent()) {
 			return ResponseEntity.status(409).build();
 		}
-		
+
 		channelRepository.save(channel);
 
 		URI uri = uriBuilder.path("/channel/{id}").buildAndExpand(channel.getId()).toUri();

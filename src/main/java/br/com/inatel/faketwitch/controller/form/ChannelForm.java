@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.inatel.faketwitch.modelo.Channel;
 
-public class ChannelForm {
+public class ChannelForm { 
 
 	@NotNull
 	@NotEmpty

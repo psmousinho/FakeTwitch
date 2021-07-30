@@ -33,7 +33,6 @@ import br.com.inatel.faketwitch.controller.dto.SimplifiedLiveStreamDTO;
 import br.com.inatel.faketwitch.controller.form.CategoryForm;
 import br.com.inatel.faketwitch.modelo.Category;
 import br.com.inatel.faketwitch.modelo.Channel;
-import br.com.inatel.faketwitch.modelo.LiveStream;
 import br.com.inatel.faketwitch.repository.CategoryRepository;
 import br.com.inatel.faketwitch.repository.ChannelRepository;
 import br.com.inatel.faketwitch.repository.LiveStreamRepository;
