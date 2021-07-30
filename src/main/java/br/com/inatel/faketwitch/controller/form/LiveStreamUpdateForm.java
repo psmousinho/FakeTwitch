@@ -20,18 +20,11 @@ public class LiveStreamUpdateForm {
 		this.gameId = gameId;
 	}
 
-	public LiveStream update(LiveStream stream, CategoryRepository categoryRepository) {
-
-		if (title != null) {
-			stream.setTitle(title);
-		}
-
-		if (gameId != null) {
-			Category category = categoryRepository.getOne(gameId);
-			stream.setGame(category);
-		}
-
-		return stream;
+	public String getTitle() {
+		return title;
 	}
 
+	public Long getGameId() {
+		return gameId;
+	}
 }

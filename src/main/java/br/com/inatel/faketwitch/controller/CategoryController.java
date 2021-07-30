@@ -137,17 +137,18 @@ public class CategoryController {
 			Category category = categoryOpt.get();
 			Channel channel = channelOpt.get();
 
-			category.getFollowers().add(channel);
+			//category.getFollowers().add(channel);
 			channel.getCategories().add(category);
 
-			categoryRepository.save(category);
+			//categoryRepository.save(category);
 			channelRepository.save(channel);
 			return ResponseEntity.ok(new DetailedCategoryDTO(category));
 		}
 
 		return ResponseEntity.notFound().build();
 	}
-
+	
+	/*
 	@PatchMapping("{categoryId}/addlivestream/{streamId}")
 	@Transactional
 	@CacheEvict(value = "categories", allEntries = true)
@@ -169,7 +170,7 @@ public class CategoryController {
 
 		return ResponseEntity.notFound().build();
 	}
-
+	*/
 	@DeleteMapping("/{id}")
 	@Transactional
 	@CacheEvict(value = "categories", allEntries = true)

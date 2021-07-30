@@ -2,11 +2,15 @@ package br.com.inatel.faketwitch.modelo;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class LiveStream {
@@ -16,8 +20,10 @@ public class LiveStream {
 	private Long id;
 	private String title;
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Channel owner;
-	@ManyToOne
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Category game;
 	private Boolean active = true;
 	private LocalDateTime started = LocalDateTime.now();

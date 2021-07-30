@@ -1,4 +1,4 @@
-package br.com.inatel.faketwitch.config.validacao;
+package br.com.inatel.faketwitch.config.validation;
 
 import java.util.ArrayList;
 import java.util.List;

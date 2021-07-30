@@ -29,6 +29,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.inatel.faketwitch.controller.dto.SimplifiedLiveStreamDTO;
 import br.com.inatel.faketwitch.controller.form.LiveStreamForm;
 import br.com.inatel.faketwitch.controller.form.LiveStreamUpdateForm;
+import br.com.inatel.faketwitch.modelo.Category;
 import br.com.inatel.faketwitch.modelo.Channel;
 import br.com.inatel.faketwitch.modelo.LiveStream;
 import br.com.inatel.faketwitch.repository.CategoryRepository;
@@ -102,7 +103,21 @@ public class LiveStreamController {
 
 		Optional<LiveStream> streamOpt = liveStreamRepository.findById(id);
 		if (streamOpt.isPresent()) {
-			LiveStream stream = form.update(streamOpt.get(), categoryRepository);
+			LiveStream stream = streamOpt.get();
+
+			if (form.getTitle() != null) {
+				stream.setTitle(form.getTitle());
+			}
+
+			if (form.getGameId() != null) {
+				Optional<Category> categoryOpt = categoryRepository.findById(form.getGameId());
+				if (categoryOpt.isPresent()) {
+					stream.setGame(categoryOpt.get());
+				} else {
+					return ResponseEntity.notFound().build();
+				}
+			}
+
 			return ResponseEntity.ok(new SimplifiedLiveStreamDTO(stream));
 		}
 
@@ -129,7 +144,7 @@ public class LiveStreamController {
 
 	@DeleteMapping("/{id}")
 	@Transactional
-	@CacheEvict(value = "livestream", allEntries = true)
+	@CacheEvict(value = "livestreams", allEntries = true)
 	public ResponseEntity<?> deleteStream(@PathVariable Long id) {
 		Optional<LiveStream> optional = liveStreamRepository.findById(id);
 		if (optional.isPresent()) {

@@ -1,8 +1,5 @@
 package br.com.inatel.faketwitch.controller.form;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.Length;
 
 import br.com.inatel.faketwitch.modelo.Channel;
@@ -10,14 +7,10 @@ import br.com.inatel.faketwitch.repository.ChannelRepository;
 
 public class ChannelUpdateForm {
 	
-	@NotNull
-	@NotEmpty
 	@Length(min = 5)
 	private String name;
 
-	@NotNull
-	@NotEmpty
-	@Length(min = 10)
+	@Length(min = 5)
 	private String password;
 
 	public void setName(String name) {
